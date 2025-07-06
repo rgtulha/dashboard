@@ -45,8 +45,16 @@ body {
     line-height: 1.6;
     display: flex; /* Permite que o container do dashboard preencha a tela */
     min-height: 100vh; /* Garante que o corpo ocupe pelo menos 100% da altura da viewport */
-    overflow-x: hidden; /* Evita rolagem horizontal indesejada */
+    overflow-x: hidden; /* Evita rolagem horizontal indesejada - importante para responsividade */
 }
+
+/* Adição CRUCIAL para responsividade de IMAGENS */
+img {
+    max-width: 100%; /* Garante que a imagem nunca exceda a largura do seu contêiner */
+    height: auto; /* Mantém a proporção original da imagem ao redimensionar */
+    display: block; /* Garante que a imagem se comporte como um bloco para melhor controle de layout */
+}
+
 
 /* 3. Layout Principal do Dashboard */
 .dashboard-container {
@@ -80,45 +88,9 @@ body {
     height: auto;
     display: block;
     margin: 0 auto 0 auto; /* Centraliza o logo e remove margem inferior extra se não houver texto */
-    /* Círculo removido: As propriedades 'border', 'padding' e 'border-radius' foram removidas/ajustadas */
     border-radius: 0; /* Garante que não haja arredondamento de borda, a menos que sua imagem seja redonda */
     border: none; /* Remove a borda */
     padding: 0; /* Remove o padding que criava espaçamento */
-}
-
-/* A classe .logo-text e seus estilos foram removidos, pois o elemento h1 não existe mais */
-
-.sidebar-nav ul {
-    list-style: none; /* Remove marcadores de lista */
-}
-
-.sidebar-nav li a {
-    display: flex;
-    align-items: center; /* Alinha ícone e texto */
-    padding: 15px 20px;
-    color: var(--text-color-light);
-    text-decoration: none;
-    font-size: 1.05em;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave ao hover */
-}
-
-.sidebar-nav li a .fas {
-    margin-right: 15px; /* Espaço entre ícone e texto */
-    font-size: 1.2em;
-}
-
-.sidebar-nav li a:hover,
-.sidebar-nav li a.active {
-    background-color: rgba(255, 255, 255, 0.1); /* Fundo levemente transparente ao hover/ativo */
-    color: var(--primary-color); /* Cor primária ao hover/ativo */
-}
-
-.sidebar-footer {
-    margin-top: auto; /* Empurra o rodapé para a parte inferior da sidebar */
-    text-align: center;
-    padding: 20px;
-    font-size: 0.8em;
-    color: var(--secondary-color);
 }
 
 /* 5. Estilos da Área de Conteúdo Principal (Main Content) */
@@ -381,8 +353,9 @@ body {
         max-width: 60px; /* Logo menor na versão mobile */
         margin: 0;
     }
-    /* O .logo-text foi removido */
 
+    /* As regras abaixo são para o caso de ter mais itens no menu lateral.
+       Como agora só há "Visão Geral", elas ainda funcionam, mas são menos críticas. */
     .sidebar-nav ul {
         display: flex;
         flex-wrap: wrap; /* Permite que os itens de navegação quebrem a linha */
@@ -410,7 +383,7 @@ body {
 
     .main-content {
         margin-left: 0; /* Remove o deslocamento para a esquerda */
-        padding: 15px;
+        padding: 15px; /* Reduz padding para telas pequenas */
         padding-top: 25px; /* Espaço extra do topo após a sidebar colapsada */
     }
     .topbar {
@@ -443,5 +416,9 @@ body {
     }
     .summary-card .card-value {
         font-size: 1.8em;
+    }
+    /* Reduzir padding em cards para telas muito pequenas, se necessário. */
+    .card {
+        padding: 15px; /* Ajuste o padding do card para telas muito pequenas */
     }
 }
