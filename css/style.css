@@ -15,7 +15,7 @@
 
 /* 1. Variáveis CSS para Cores e Sombras */
 :root {
-    --primary-color: #007bff; /* Azul vibrante para acentos e ações principais */
+    --primary-color: #2b2d42; /* AZUL PRINCIPAL */
     --secondary-color: #6c757d; /* Cinza escuro para textos secundários */
     --background-light: #f8f9fa; /* Fundo claro para o corpo principal */
     --background-dark: #343a40; /* Fundo escuro para a barra lateral */
@@ -71,7 +71,7 @@ body {
 
 .sidebar-header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 30px; /* Mantém um espaço abaixo da logo */
     padding: 0 20px;
 }
 
@@ -79,19 +79,14 @@ body {
     max-width: 120px; /* Tamanho máximo do logo */
     height: auto;
     display: block;
-    margin: 0 auto 10px auto; /* Centraliza o logo e adiciona margem inferior */
-    border-radius: 50%; /* Se o logo for redondo, adiciona borda circular */
-    border: 2px solid var(--primary-color); /* Borda com a cor primária */
-    padding: 5px;
+    margin: 0 auto 0 auto; /* Centraliza o logo e remove margem inferior extra se não houver texto */
+    /* Círculo removido: As propriedades 'border', 'padding' e 'border-radius' foram removidas/ajustadas */
+    border-radius: 0; /* Garante que não haja arredondamento de borda, a menos que sua imagem seja redonda */
+    border: none; /* Remove a borda */
+    padding: 0; /* Remove o padding que criava espaçamento */
 }
 
-.sidebar-header .logo-text {
-    font-size: 1.8em;
-    font-weight: 700;
-    color: var(--primary-color);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
+/* A classe .logo-text e seus estilos foram removidos, pois o elemento h1 não existe mais */
 
 .sidebar-nav ul {
     list-style: none; /* Remove marcadores de lista */
@@ -279,7 +274,7 @@ body {
 }
 
 .link-card .btn:hover {
-    background-color: #0056b3; /* Azul mais escuro ao hover */
+    background-color: #1a1b2b; /* Tom mais escuro para o hover do novo azul */
 }
 
 .status-indicator {
@@ -332,10 +327,7 @@ body {
     color: var(--primary-color);
 }
 
-/* 12. Estilos Específicos para Cartões de Contato (Contact Cards) */
-.contact-card .card-icon {
-    font-size: 2em;
-}
+/* 12. Estilos Específicos para Cartões de Contato (Contact Cards) - REMOVIDOS POIS A SEÇÃO FOI REMOVIDA */
 
 /* 13. Responsividade (Media Queries) */
 
@@ -389,9 +381,7 @@ body {
         max-width: 60px; /* Logo menor na versão mobile */
         margin: 0;
     }
-    .sidebar-header .logo-text {
-        font-size: 1.5em;
-    }
+    /* O .logo-text foi removido */
 
     .sidebar-nav ul {
         display: flex;
@@ -446,7 +436,7 @@ body {
 @media (max-width: 480px) {
     .sidebar-nav li {
         min-width: unset; /* Remove largura mínima para maior flexibilidade */
-        width: 50%; /* Duas colunas na navegação */
+        width: 100%; /* Uma única coluna na navegação para visibilidade */
     }
     .sidebar-nav ul {
         padding-bottom: 10px;
