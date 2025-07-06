@@ -1,0 +1,457 @@
+/*
+ * CSS para o Dashboard da Supporta
+ * Estilos modernos, responsivos e organizados.
+ *
+ * Estrutura de Pastas e Arquivos para GitHub Pages:
+ *
+ * seu-repositorio/
+ * ├── index.html
+ * ├── css/
+ * │   └── style.css
+ * └── images/
+ *     └── logo-nova.png  <-- Verifique se sua imagem está aqui com ESTE NOME
+ *
+ */
+
+/* 1. Variáveis CSS para Cores e Sombras */
+:root {
+    --primary-color: #007bff; /* Azul vibrante para acentos e ações principais */
+    --secondary-color: #6c757d; /* Cinza escuro para textos secundários */
+    --background-light: #f8f9fa; /* Fundo claro para o corpo principal */
+    --background-dark: #343a40; /* Fundo escuro para a barra lateral */
+    --card-background: #ffffff; /* Fundo branco para os cartões */
+    --text-color-dark: #212529; /* Cor de texto principal (preto quase total) */
+    --text-color-light: #f8f9fa; /* Cor de texto para fundos escuros */
+    --border-color: #e9ecef; /* Cor de borda suave */
+    --success-color: #28a745; /* Verde para sucesso/online */
+    --danger-color: #dc3545; /* Vermelho para erro/offline */
+    --warning-color: #ffc107; /* Amarelo para alertas/atenção */
+    --info-color: #17a2b8; /* Ciano para informações neutras */
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05); /* Sombra suave para profundidade */
+    --shadow-medium: 0 6px 20px rgba(0, 0, 0, 0.08); /* Sombra mais pronunciada ao hover */
+}
+
+/* 2. Reset Básico e Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Garante que padding e border não aumentem o tamanho total do elemento */
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* Fonte moderna e legível */
+    background-color: var(--background-light);
+    color: var(--text-color-dark);
+    line-height: 1.6;
+    display: flex; /* Permite que o container do dashboard preencha a tela */
+    min-height: 100vh; /* Garante que o corpo ocupe pelo menos 100% da altura da viewport */
+    overflow-x: hidden; /* Evita rolagem horizontal indesejada */
+}
+
+/* 3. Layout Principal do Dashboard */
+.dashboard-container {
+    display: flex;
+    width: 100%;
+}
+
+/* 4. Estilos da Barra Lateral (Sidebar) */
+.sidebar {
+    width: 250px;
+    background-color: var(--background-dark);
+    color: var(--text-color-light);
+    display: flex;
+    flex-direction: column; /* Organiza itens em coluna */
+    padding: 20px 0;
+    box-shadow: var(--shadow-medium);
+    position: fixed; /* Fixa a sidebar na tela */
+    height: 100vh; /* Ocupa a altura total da viewport */
+    overflow-y: auto; /* Adiciona rolagem se o conteúdo da sidebar for muito longo */
+    z-index: 1000; /* Garante que a sidebar fique acima de outros elementos */
+}
+
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+.sidebar-header .logo {
+    max-width: 120px; /* Tamanho máximo do logo */
+    height: auto;
+    display: block;
+    margin: 0 auto 10px auto; /* Centraliza o logo e adiciona margem inferior */
+    border-radius: 50%; /* Se o logo for redondo, adiciona borda circular */
+    border: 2px solid var(--primary-color); /* Borda com a cor primária */
+    padding: 5px;
+}
+
+.sidebar-header .logo-text {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.sidebar-nav ul {
+    list-style: none; /* Remove marcadores de lista */
+}
+
+.sidebar-nav li a {
+    display: flex;
+    align-items: center; /* Alinha ícone e texto */
+    padding: 15px 20px;
+    color: var(--text-color-light);
+    text-decoration: none;
+    font-size: 1.05em;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave ao hover */
+}
+
+.sidebar-nav li a .fas {
+    margin-right: 15px; /* Espaço entre ícone e texto */
+    font-size: 1.2em;
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li a.active {
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo levemente transparente ao hover/ativo */
+    color: var(--primary-color); /* Cor primária ao hover/ativo */
+}
+
+.sidebar-footer {
+    margin-top: auto; /* Empurra o rodapé para a parte inferior da sidebar */
+    text-align: center;
+    padding: 20px;
+    font-size: 0.8em;
+    color: var(--secondary-color);
+}
+
+/* 5. Estilos da Área de Conteúdo Principal (Main Content) */
+.main-content {
+    margin-left: 250px; /* Desloca o conteúdo principal para compensar a sidebar fixa */
+    flex-grow: 1; /* Permite que ocupe o espaço restante */
+    padding: 20px;
+    background-color: var(--background-light);
+    display: flex;
+    flex-direction: column; /* Organiza seções em coluna */
+    gap: 30px; /* Espaço entre as seções */
+    width: calc(100% - 250px); /* Ajusta largura para telas grandes */
+}
+
+/* 6. Estilos da Barra Superior (Topbar) */
+.topbar {
+    display: flex;
+    justify-content: space-between; /* Espaça itens igualmente */
+    align-items: center;
+    background-color: var(--card-background);
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-light);
+    margin-bottom: 20px; /* Espaço abaixo da topbar */
+}
+
+.topbar-title {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: var(--text-color-dark);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre nome e ícone do usuário */
+}
+
+.user-info .user-name {
+    font-weight: 500;
+    color: var(--secondary-color);
+}
+
+.user-info .user-icon {
+    font-size: 1.5em;
+    color: var(--primary-color);
+}
+
+/* 7. Estilos das Seções do Dashboard */
+.dashboard-section {
+    background-color: var(--card-background);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-light);
+}
+
+.section-title {
+    font-size: 1.6em;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--border-color); /* Linha divisória */
+    padding-bottom: 15px;
+}
+
+.section-content {
+    display: grid; /* Layout em grade para os cartões */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Colunas responsivas */
+    gap: 25px; /* Espaço entre os cartões */
+}
+
+/* 8. Estilos Gerais para os Cartões (Cards) */
+.card {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: var(--shadow-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Espaça conteúdo verticalmente */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave ao hover */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Efeito de elevação ao hover */
+    box-shadow: var(--shadow-medium);
+}
+
+.card h3 {
+    font-size: 1.3em;
+    color: var(--text-color-dark);
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 0.95em;
+    color: var(--secondary-color);
+}
+
+.card-icon {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* 9. Estilos Específicos para Cartões de Resumo (Summary Cards) */
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.summary-card {
+    text-align: center;
+    padding: 20px;
+}
+
+.summary-card .card-value {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: var(--text-color-dark);
+    margin: 10px 0;
+}
+
+.summary-card .card-trend {
+    font-size: 1em;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+/* Cores dos indicadores de tendência */
+.summary-card .card-trend.positive { color: var(--success-color); }
+.summary-card .card-trend.negative { color: var(--danger-color); }
+.summary-card .card-trend.neutral { color: var(--info-color); }
+.summary-card .card-trend.attention { color: var(--warning-color); }
+
+/* 10. Estilos Específicos para Cartões de Link (Link Cards) */
+.link-card .btn {
+    display: inline-flex; /* Usa flexbox para alinhar texto e ícone */
+    align-items: center;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+    align-self: flex-start; /* Alinha o botão ao início dentro da coluna flex */
+    gap: 8px; /* Espaço entre texto e ícone */
+}
+
+.link-card .btn:hover {
+    background-color: #0056b3; /* Azul mais escuro ao hover */
+}
+
+.status-indicator {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-size: 0.85em;
+    font-weight: 600;
+    margin-top: 10px;
+    align-self: flex-start;
+}
+
+.status-indicator.online {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.status-indicator.offline {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* 11. Estilos Específicos para Cartões de Dados (Data Cards) */
+.data-card {
+    background-color: #f3f9ff; /* Fundo mais claro para cartões de dados */
+    border: 1px solid var(--primary-color);
+}
+
+.data-card.full-width {
+    grid-column: 1 / -1; /* Faz o cartão ocupar a largura total da grade */
+}
+
+.data-card ul {
+    list-style: none;
+    padding-top: 10px;
+}
+
+.data-card ul li {
+    padding: 5px 0;
+    border-bottom: 1px dashed var(--border-color); /* Linha pontilhada entre os itens */
+    font-size: 0.9em;
+    color: var(--text-color-dark);
+}
+
+.data-card ul li:last-child {
+    border-bottom: none; /* Remove borda do último item */
+}
+
+.data-card ul li strong {
+    color: var(--primary-color);
+}
+
+/* 12. Estilos Específicos para Cartões de Contato (Contact Cards) */
+.contact-card .card-icon {
+    font-size: 2em;
+}
+
+/* 13. Responsividade (Media Queries) */
+
+/* Para telas de tablet e desktops menores (até 992px) */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 200px; /* Sidebar um pouco mais estreita */
+    }
+    .main-content {
+        margin-left: 200px;
+        padding: 15px;
+        gap: 20px;
+    }
+    .topbar {
+        padding: 15px 20px;
+    }
+    .topbar-title {
+        font-size: 1.5em;
+    }
+    .section-content {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    .card {
+        padding: 20px;
+    }
+}
+
+/* Para telas de dispositivos móveis (até 768px) */
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column; /* Empilha sidebar e conteúdo principal */
+    }
+    .sidebar {
+        width: 100%; /* Sidebar ocupa a largura total */
+        height: auto;
+        position: relative; /* Remove a posição fixa para rolagem com a página */
+        box-shadow: var(--shadow-light);
+        padding-bottom: 0;
+    }
+    .sidebar-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        padding: 15px 0;
+        margin-bottom: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .sidebar-header .logo {
+        max-width: 60px; /* Logo menor na versão mobile */
+        margin: 0;
+    }
+    .sidebar-header .logo-text {
+        font-size: 1.5em;
+    }
+
+    .sidebar-nav ul {
+        display: flex;
+        flex-wrap: wrap; /* Permite que os itens de navegação quebrem a linha */
+        justify-content: center;
+    }
+    .sidebar-nav li {
+        flex: 1 1 auto; /* Permite que os itens cresçam e encolham */
+        min-width: 120px; /* Largura mínima para cada item de navegação */
+    }
+    .sidebar-nav li a {
+        justify-content: center; /* Centraliza texto e ícone */
+        flex-direction: column; /* Empilha ícone e texto */
+        text-align: center;
+        padding: 10px 5px;
+        font-size: 0.9em;
+    }
+    .sidebar-nav li a .fas {
+        margin-right: 0;
+        margin-bottom: 5px;
+        font-size: 1.1em;
+    }
+    .sidebar-footer {
+        display: none; /* Oculta o rodapé em telas pequenas */
+    }
+
+    .main-content {
+        margin-left: 0; /* Remove o deslocamento para a esquerda */
+        padding: 15px;
+        padding-top: 25px; /* Espaço extra do topo após a sidebar colapsada */
+    }
+    .topbar {
+        flex-direction: column; /* Empilha itens da topbar */
+        align-items: flex-start;
+        gap: 10px;
+        padding: 15px;
+    }
+    .topbar-title {
+        font-size: 1.3em;
+    }
+    .user-info {
+        width: 100%;
+        justify-content: flex-end; /* Alinha informações do usuário à direita */
+    }
+    .summary-cards, .section-content {
+        grid-template-columns: 1fr; /* Uma única coluna em telas muito pequenas */
+        gap: 15px;
+    }
+}
+
+/* Para telas de smartphones menores (até 480px) */
+@media (max-width: 480px) {
+    .sidebar-nav li {
+        min-width: unset; /* Remove largura mínima para maior flexibilidade */
+        width: 50%; /* Duas colunas na navegação */
+    }
+    .sidebar-nav ul {
+        padding-bottom: 10px;
+    }
+    .summary-card .card-value {
+        font-size: 1.8em;
+    }
+}
