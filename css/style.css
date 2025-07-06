@@ -15,13 +15,14 @@
 
 /* 1. Variáveis CSS para Cores e Sombras */
 :root {
-    --primary-color: #2b2d42; /* AZUL PRINCIPAL */
+    --primary-color: #212d42; /* NOVO AZUL PRINCIPAL: Mais escuro */
     --secondary-color: #6c757d; /* Cinza escuro para textos secundários */
     --background-light: #f8f9fa; /* Fundo claro para o corpo principal */
-    --background-dark: #343a40; /* Fundo escuro para a barra lateral */
+    --background-dark: #EAEAEA; /* NOVO FUNDO DO MENU LATERAL: Cinza claro */
     --card-background: #ffffff; /* Fundo branco para os cartões */
     --text-color-dark: #212529; /* Cor de texto principal (preto quase total) */
-    --text-color-light: #f8f9fa; /* Cor de texto para fundos escuros */
+    --sidebar-text-color: #333333; /* NOVO: Cor de texto para o menu lateral (para contraste) */
+    --icon-color: #d17400; /* NOVA COR PARA ÍCONES: Laranja */
     --border-color: #e9ecef; /* Cor de borda suave */
     --success-color: #28a745; /* Verde para sucesso/online */
     --danger-color: #dc3545; /* Vermelho para erro/offline */
@@ -65,8 +66,8 @@ img {
 /* 4. Estilos da Barra Lateral (Sidebar) */
 .sidebar {
     width: 250px;
-    background-color: var(--background-dark);
-    color: var(--text-color-light);
+    background-color: var(--background-dark); /* APLICANDO O NOVO FUNDO CINZA CLARO */
+    color: var(--sidebar-text-color); /* APLICANDO A NOVA COR DE TEXTO PARA SIDEBAR */
     display: flex;
     flex-direction: column; /* Organiza itens em coluna */
     padding: 20px 0;
@@ -84,13 +85,49 @@ img {
 }
 
 .sidebar-header .logo {
-    max-width: 120px; /* Tamanho máximo do logo */
+    max-width: 180px; /* AUMENTANDO O TAMANHO DA LOGO */
     height: auto;
     display: block;
-    margin: 0 auto 0 auto; /* Centraliza o logo e remove margem inferior extra se não houver texto */
-    border-radius: 0; /* Garante que não haja arredondamento de borda, a menos que sua imagem seja redonda */
-    border: none; /* Remove a borda */
-    padding: 0; /* Remove o padding que criava espaçamento */
+    margin: 0 auto 0 auto; /* Centraliza o logo */
+    border-radius: 0; /* REMOVENDO O ARREDONDAMENTO DA BORDA (CÍRCULO) */
+    border: none; /* REMOVENDO A BORDA */
+    padding: 0; /* REMOVENDO O PADDING */
+}
+
+/* A classe .logo-text e seus estilos foram removidos, pois o elemento h1 não existe mais */
+
+.sidebar-nav ul {
+    list-style: none; /* Remove marcadores de lista */
+}
+
+.sidebar-nav li a {
+    display: flex;
+    align-items: center; /* Alinha ícone e texto */
+    padding: 15px 20px;
+    color: var(--sidebar-text-color); /* Cor do texto do link no menu lateral */
+    text-decoration: none;
+    font-size: 1.05em;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave ao hover */
+}
+
+.sidebar-nav li a .fas {
+    margin-right: 15px; /* Espaço entre ícone e texto */
+    font-size: 1.2em;
+    color: var(--icon-color); /* APLICANDO A NOVA COR DOS ÍCONES LATERAIS */
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li a.active {
+    background-color: rgba(0, 0, 0, 0.05); /* Fundo sutilmente escuro ao hover/ativo para contraste no cinza claro */
+    color: var(--primary-color); /* Cor primária para o texto no hover/ativo */
+}
+
+.sidebar-footer {
+    margin-top: auto; /* Empurra o rodapé para a parte inferior da sidebar */
+    text-align: center;
+    padding: 20px;
+    font-size: 0.8em;
+    color: var(--secondary-color);
 }
 
 /* 5. Estilos da Área de Conteúdo Principal (Main Content) */
@@ -136,7 +173,7 @@ img {
 
 .user-info .user-icon {
     font-size: 1.5em;
-    color: var(--primary-color);
+    color: var(--icon-color); /* APLICANDO A NOVA COR DO ÍCONE DE USUÁRIO */
 }
 
 /* 7. Estilos das Seções do Dashboard */
@@ -149,7 +186,7 @@ img {
 
 .section-title {
     font-size: 1.6em;
-    color: var(--primary-color);
+    color: var(--primary-color); /* Títulos de seção usam a cor primária */
     margin-bottom: 25px;
     border-bottom: 2px solid var(--border-color); /* Linha divisória */
     padding-bottom: 15px;
@@ -191,7 +228,7 @@ img {
 
 .card-icon {
     font-size: 2.5em;
-    color: var(--primary-color);
+    color: var(--icon-color); /* APLICANDO A NOVA COR DOS ÍCONES DOS CARTÕES */
     margin-bottom: 15px;
 }
 
@@ -233,7 +270,7 @@ img {
 .link-card .btn {
     display: inline-flex; /* Usa flexbox para alinhar texto e ícone */
     align-items: center;
-    background-color: var(--primary-color);
+    background-color: var(--primary-color); /* Botões usam a cor primária */
     color: white;
     padding: 10px 18px;
     border-radius: 5px;
@@ -246,7 +283,7 @@ img {
 }
 
 .link-card .btn:hover {
-    background-color: #1a1b2b; /* Tom mais escuro para o hover do novo azul */
+    background-color: #151b22; /* Tom mais escuro para o hover do novo azul */
 }
 
 .status-indicator {
@@ -272,7 +309,7 @@ img {
 /* 11. Estilos Específicos para Cartões de Dados (Data Cards) */
 .data-card {
     background-color: #f3f9ff; /* Fundo mais claro para cartões de dados */
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--primary-color); /* Borda com a cor primária */
 }
 
 .data-card.full-width {
@@ -296,7 +333,7 @@ img {
 }
 
 .data-card ul li strong {
-    color: var(--primary-color);
+    color: var(--primary-color); /* Texto em negrito dentro de data-card usa a cor primária */
 }
 
 /* 12. Estilos Específicos para Cartões de Contato (Contact Cards) - REMOVIDOS POIS A SEÇÃO FOI REMOVIDA */
@@ -347,15 +384,13 @@ img {
         gap: 15px;
         padding: 15px 0;
         margin-bottom: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Linha divisória no menu superior para mobile */
     }
     .sidebar-header .logo {
         max-width: 60px; /* Logo menor na versão mobile */
         margin: 0;
     }
 
-    /* As regras abaixo são para o caso de ter mais itens no menu lateral.
-       Como agora só há "Visão Geral", elas ainda funcionam, mas são menos críticas. */
     .sidebar-nav ul {
         display: flex;
         flex-wrap: wrap; /* Permite que os itens de navegação quebrem a linha */
